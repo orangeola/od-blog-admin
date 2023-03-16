@@ -5,6 +5,34 @@ function Comment() {
   const {id} = useParams();
   let [comments, setComments] = useState(null);
   let [success, setSuccess] = useState(false);
+  let [toDelete, setToDelete] = useState(null);
+
+  useEffect(() => {
+    const handleDel = async () => {
+      try{
+        let res = await fetch(`http://localhost:5000/comment/${toDelete}`, {
+          method: 'DELETE',
+          headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+              'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token')),
+          },
+        })
+        let resJson = await res.json();
+        if (res.status === 200) {
+          console.log("Comment deleted", resJson);
+        } else {
+          console.log("Some error occured", resJson);
+        }
+      }
+      catch(err){
+        console.log("fetch err: ", err);
+      }
+    };
+    if(toDelete !== null){
+      handleDel();
+      setToDelete(null);
+    }
+  }, [toDelete]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/post/${id}/comment`)
@@ -23,7 +51,7 @@ function Comment() {
             <i>{task.author}</i><br></br>
             <i>{task.date}</i><br></br>
             {task.text}<br></br>
-            <button>Delete</button>
+            <button onClick={() => {setToDelete(task._id)}}>Delete</button>
             <hr></hr>
             </div>;
         })}
