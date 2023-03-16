@@ -38,7 +38,7 @@ function Home() {
           </div>;
         })}
         <br></br>
-        <a href='/'>New Post</a>
+        <a href='/post/new'>New Post</a>
       </div>
     );
   }
