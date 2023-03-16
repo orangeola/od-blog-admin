@@ -8,7 +8,6 @@ function Post() {
   let [update, setUpdate] = useState(false);
   let [title, setTitle] = useState(false);
   let [text, setText] = useState(false);
-  let [submitted, setSubmitted] = useState(false);
 
   const handleDelP = async () => {
     try{
@@ -49,8 +48,6 @@ function Post() {
       let resJson = await res.json();
       if (res.status === 200) {
         console.log("Post update", resJson);
-        setPost(resJson.update);
-        setSubmitted(true);
         prepareForm();
       } else {
         console.log("Some error occured", resJson);
@@ -69,7 +66,7 @@ function Post() {
     setTitle(data.post[0].title);
     setText(data.post[0].text);
     })
-  }, [submitted]);
+  }, [update]);
 
   async function prepareForm(){
     await setUpdate(!update);
@@ -77,7 +74,6 @@ function Post() {
       document.getElementsByName('title')[0].value = title;
       document.getElementsByName('text')[0].value = text;
     }
-    setSubmitted(false);
   }
 
   return (
