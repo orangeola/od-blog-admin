@@ -6,6 +6,28 @@ function Post() {
   const {id} = useParams();
   let [post, setPost] = useState(null);
 
+  const handleDelP = async () => {
+    try{
+      let res = await fetch(`http://localhost:5000/post/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token')),
+        },
+      })
+      let resJson = await res.json();
+      if (res.status === 200) {
+        console.log("Post deleted", resJson);
+        window.location.replace("http://localhost:3000/home");
+      } else {
+        console.log("Some error occured", resJson);
+      }
+    }
+    catch(err){
+      console.log("fetch err: ", err);
+    }
+  };
+
   useEffect(() => {
     fetch(`http://localhost:5000/post/${id}`)
    .then(response => response.json())
@@ -17,10 +39,10 @@ function Post() {
 
   return (
     <div className="Post">
-      <button>Delete</button>
-      <button>Update</button>
       {post && 
       <div>
+        <button onClick={() => {handleDelP()}}>Delete</button>
+        <button>Update</button>
         <h1>{post.title}</h1>
         <p>{post.text}</p>
         <i><p>Posted at: {post.date}</p></i>
