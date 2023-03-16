@@ -44,16 +44,3 @@ function Home() {
   }
 
 export default Home;
-
-/*
-<h1>Posts</h1>    
-        <a href="/deletepost">Delete posts</a>
-        <br></br>
-        <a href="/">Update posts</a>
-        <br></br>
-        <a href="/">New post</a>
-        <br></br>
-        <h1>Comments</h1>
-        <a href="/">Delete comments</a>
-        <br></br>
-        */

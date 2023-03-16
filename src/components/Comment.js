@@ -31,6 +31,7 @@ function Comment() {
     if(toDelete !== null){
       handleDel();
       setToDelete(null);
+      setSuccess(true);
     }
   }, [toDelete]);
 
@@ -41,6 +42,7 @@ function Comment() {
     console.log(data.comment)
     setComments(data.comment);
     })
+    setSuccess(false);
   }, [success]);
 
   return (
