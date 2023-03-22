@@ -31,7 +31,7 @@ function Home() {
       <div className="DeletePost">
         {posts && posts.map((task) => {
         return <div key={task._id}>
-          <a href={'/post/' + task._id}>{limitLengthTitle(task.title)}</a><br></br>
+          <a href={'/od-blog-admin/post/' + task._id}>{limitLengthTitle(task.title)}</a><br></br>
           {limitLengthText(task.text)}<br></br>
           <i>{task.date}</i><br></br>
           <hr></hr>
