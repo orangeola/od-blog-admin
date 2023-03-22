@@ -7,7 +7,7 @@ function New() {
   const handleNew = async (e) => {
     e.preventDefault();
     try{
-      let res = await fetch(`http://localhost:5000/post/new`, {
+      let res = await fetch(`https://od-blog-api.orangeola.repl.co/post/new`, {
         method: 'POST',
         body: JSON.stringify({
           title: title,

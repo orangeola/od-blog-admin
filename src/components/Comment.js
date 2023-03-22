@@ -10,7 +10,7 @@ function Comment() {
   useEffect(() => {
     const handleDel = async () => {
       try{
-        let res = await fetch(`http://localhost:5000/comment/${toDelete}`, {
+        let res = await fetch(`https://od-blog-api.orangeola.repl.co/comment/${toDelete}`, {
           method: 'DELETE',
           headers: {
               'Content-type': 'application/json; charset=UTF-8',
@@ -36,7 +36,7 @@ function Comment() {
   }, [toDelete]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/post/${id}/comment`)
+    fetch(`https://od-blog-api.orangeola.repl.co/post/${id}/comment`)
    .then(response => response.json())
    .then(data => {
     console.log(data.comment)

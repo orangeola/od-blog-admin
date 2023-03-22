@@ -11,7 +11,7 @@ function Post() {
 
   const handleDelP = async () => {
     try{
-      let res = await fetch(`http://localhost:5000/post/${id}`, {
+      let res = await fetch(`https://od-blog-api.orangeola.repl.co/post/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
@@ -21,7 +21,7 @@ function Post() {
       let resJson = await res.json();
       if (res.status === 200) {
         console.log("Post deleted", resJson);
-        window.location.replace("http://localhost:3000/home");
+        window.location.replace("https://od-blog-api.orangeola.repl.co/home");
       } else {
         console.log("Some error occured", resJson);
       }
@@ -34,7 +34,7 @@ function Post() {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try{
-      let res = await fetch(`http://localhost:5000/post/${id}/update`, {
+      let res = await fetch(`https://od-blog-api.orangeola.repl.co/post/${id}/update`, {
         method: 'PUT',
         body: JSON.stringify({
           title: title,
@@ -59,7 +59,7 @@ function Post() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/post/${id}`)
+    fetch(`https://od-blog-api.orangeola.repl.co/post/${id}`)
    .then(response => response.json())
    .then(data => {
     setPost(data.post[0]);

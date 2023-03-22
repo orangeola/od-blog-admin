@@ -9,7 +9,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try{
-    let res = await fetch(`http://localhost:5000/login`, {
+    let res = await fetch(`https://od-blog-api.orangeola.repl.co/login`, {
        method: 'POST',
        body: JSON.stringify({
           username: username,
