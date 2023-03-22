@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/od-blog-admin/static/js/main.171e65f0.js",
+    "index.html": "/od-blog-admin/index.html",
+    "main.171e65f0.js.map": "/od-blog-admin/static/js/main.171e65f0.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.171e65f0.js"
+  ]
+}
